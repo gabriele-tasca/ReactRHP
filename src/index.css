@@ -38,7 +38,43 @@ html, body, #root, #root>div {
     display:block;
     margin:0.2em auto;
   }
+}
+
+
+.button3small {
+  font-size: 18px;
+  padding:0.3em 1.2em;
+  margin:0 10px 10px 0;
+  border-radius:70px;
+  border: 2px solid #4095c6;
+  font-weight:700;
+  color:#FFFFFF;
+  background-color:#4eb5f1;
+  text-align:center;
+  transition: all 0.15s;
+}
+
+.button3small:hover {
+  background-color:#4095c6;
+}
+@media all and (max-width:30em){
+  .button3small {
+    display:block;
+    margin:0.2em auto;
+  }
 } 
+
+.hidden {
+  display: none;
+}
+
+#content:hover~#b{
+  display: block;
+  background-color:#4095c6;
+  border: 2px solid #2e162e;
+
+}
+
 
 .textField1 {
   font-size: 30px;
