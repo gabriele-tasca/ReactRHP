@@ -5,24 +5,14 @@ import './index.css';
 import {styles} from "./styles";
 
 import { Game } from './game'
+import { RoomsList } from './RoomsList'
+
 
 
 function randomRoomName () {
   return "room"+String(Math.floor(Math.random()*(999-100+1)+100));
 }
 
-// Create WebSocket connection.
-const socket = new WebSocket('ws://localhost:9080');
-
-// Connection opened
-socket.addEventListener('open', function (event) {
-    socket.send('L: \n');
-});
-
-// Listen for messages
-socket.addEventListener('message', function (event) {
-    console.log('Message from server ', event.data);
-});
 
 
 
@@ -92,18 +82,40 @@ class App extends React.Component {
       phase: Phase.Home,
       // phase: Phase.Game, // remove
       host: null,
+      roomsArray: []
     };
     this.createRoom = this.createRoom.bind(this);
     this.joinRoom = this.joinRoom.bind(this);
+    this.requestList = this.requestList.bind(this);
+    this.readMessage = this.readMessage.bind(this);
 
     this.placeholderText = basePlaceholderText
+    this.socket = null
   }
+
+  componentDidMount() {
+    // Create WebSocket connection.
+    this.socket = new WebSocket('ws://localhost:9080');
+
+    // Connection opened
+    this.socket.addEventListener('open', this.requestList);
+
+    // Listen for messages
+    this.socket.addEventListener('message', this.readMessage);
+  }
+
+  componentWillUnmount() {
+
+  }
+
 
   render() {
     if (this.state.phase == Phase.Home) {
       return (
         <div className="align-container">
-          <div style={{border: 'solid', width: '100%', margin: '30px'}}> Mongrel Money </div>
+          
+          <RoomsList roomsArray={this.state.roomsArray} />
+
           <div className="margin-container"  style={{margin: '20px'}}>
             <RoomNamePanel text="CREATE ROOM" placeholderText={this.placeholderText} startingText={startingRoomName()} handleSubmit={this.createRoom.bind(this)}/>
             <div style={{margin: '25px'}}></div>
@@ -120,15 +132,26 @@ class App extends React.Component {
 
   }
 
+  requestList = (event) => {
+      this.socket.send('L: \n');
+  }
+
+  readMessage = (event) => {
+    if (event.data.startsWith("L: ")) {
+      var roomsArray = JSON.parse(event.data.substr(3).trim());
+      
+      this.setState({roomsArray: roomsArray})
+      console.log('parsed as ', roomsArray);
+    }
+  }
+
   localCheckRoomName = (room_name) => {
     return (room_name != "");
   }
 
-
-
   createRoom = (room_name) => {
     if (this.localCheckRoomName(room_name) == true) {
-      socket.send('Z: '+room_name+'\n');
+      this.socket.send('Z: '+room_name+'\n');
       // this.switchToGame(true);
     }
   }
