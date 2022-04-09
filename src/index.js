@@ -112,9 +112,11 @@ class App extends React.Component {
   render() {
     if (this.state.phase == Phase.Home) {
       return (
-        <div className="align-container">
+        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
           
-          <RoomsList roomsArray={this.state.roomsArray} />
+          <div >
+            <RoomsList roomsArray={this.state.roomsArray} />
+          </div>
 
           <div className="margin-container"  style={{margin: '20px'}}>
             <RoomNamePanel text="CREATE ROOM" placeholderText={this.placeholderText} startingText={startingRoomName()} handleSubmit={this.createRoom.bind(this)}/>

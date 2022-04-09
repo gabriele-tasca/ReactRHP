@@ -39,7 +39,9 @@ export class RoomPanel extends React.Component {
         return (
         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '5px'}} 
         onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} > 
-            {this.props.name} 
+            <div className='listEntry'>
+                {this.props.name} 
+            </div>
             <div style={{width: '5%'}}/>
             <HideableButton className='button3small' hidden={!this.state.hover} text='JOIN'/>  
         </div>
