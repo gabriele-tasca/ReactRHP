@@ -5,18 +5,27 @@ export class RoomsList extends React.Component {
     render() {
         return (
 
-        <div style={{ padding: '10px', display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '100%', transition: 'all 0.15s'
+        <div style={{  display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '100%', height: '100%',  
     }}>
-            <div style={{display: 'flex', flexDirection: 'column',   width: '100%', transition: 'all 0.15s' }}>
-              <div style={{textAlign: 'center', paddingBottom: '10px', transition: 'all 0.15s'}}>
-                Join a room: <br/>
-              </div>
+            
+            <div style={{  width:'100%', maxHeight:'90%', overflowY:'auto', padding: '10px', }}> 
 
-                {/* {arrayItems(this.props.roomsArray)} */}
-                {/* {arrayItems(["a","b","e","g","ry","wu","wertu",])} */}
-                {/* {arrayItems(["a","b","e","g","ry","wu","wertu","e5","6uiq","a5y","ey","w5u","w4u","w4","6u4","wuw","5uw","45u"])} */}
-                {arrayItems(["a","b","e","g","ry","wu","wertu","e5","6uiq","a5y","ey","w5u","w4u","w4","6u4","wuw","5uw","45u"])}
+                    <div style={{display: 'flex', flexDirection: 'column',   width: '100%', transition: 'all 0.15s' ,
+                    
+                    }}>
+
+                        <div style={{textAlign: 'center', paddingBottom: '10px', transition: 'all 0.15s'}}>
+                            Join a room: <br/>
+                        </div>
+
+                        {arrayItems(this.props.roomsArray)}
+                        {/* {arrayItems(["a","b","e","g","ry","wu","wertu",])} */}
+                        {/* {arrayItems(["a","b","e","g","ry","wu","wertu","e5","6uiq","a5y","ey","w5u","w4u","w4","6u4","wuw","5uw","45u"])} */}
+                        {/* {arrayItems(["a","b","e","g","ry","wu","wertu","e5","6uiq","a5y","ey","w5u","w4u","w4","6u4","wuw","5uw","45u"])} */}
+                    </div>
+
             </div>
+
         </div>
 
         );

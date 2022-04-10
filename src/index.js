@@ -116,7 +116,7 @@ class App extends React.Component {
   render() {
     if (this.state.phase == Phase.Home) {
       return (
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
+        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: '100%' }}>
 
           <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width: '30%', padding: '10px'}} 
                 className='maintitle'>
