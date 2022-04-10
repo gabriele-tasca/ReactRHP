@@ -16,7 +16,7 @@ function randomRoomName () {
 
 
 
-class RoomNamePanel extends React.Component {
+class EnterRoomNamePanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: this.props.startingText}; // non-placeholder default text
@@ -34,12 +34,11 @@ class RoomNamePanel extends React.Component {
 
   render() {
     return (
-      <div style={{justifyContent: 'center', padding: '5px'}}>
+      <div style={{justifyContent: 'center', padding: '0px', width: '100%', }}>
+
         <form onSubmit={this.handleSubmit}> 
-          <div style={{padding: '10px'}}> 
-            <input type="submit" value={this.props.text} className='button3'/>
-          </div>
-          <div style={{padding: '10px'}}>
+          
+          <div style={{padding: '10px', width: '100%', }}>
             <input 
               type="text" 
               value={this.state.value} 
@@ -47,6 +46,11 @@ class RoomNamePanel extends React.Component {
               className='textField1'
               onChange={this.handleChange} />
           </div>
+
+          <div style={{padding: '10px', width: '100%',  }}> 
+            <input type="submit" value={this.props.text} className='button3'/>
+          </div>
+
         </form>
       </div>
 
@@ -112,16 +116,25 @@ class App extends React.Component {
   render() {
     if (this.state.phase == Phase.Home) {
       return (
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-          
-          <div >
-            <RoomsList roomsArray={this.state.roomsArray} />
+        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
+
+          <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width: '30%', padding: '10px'}} 
+                className='maintitle'>
+            <b> Rhymepong React </b>
           </div>
 
-          <div className="margin-container"  style={{margin: '20px'}}>
-            <RoomNamePanel text="CREATE ROOM" placeholderText={this.placeholderText} startingText={startingRoomName()} handleSubmit={this.createRoom.bind(this)}/>
-            <div style={{margin: '25px'}}></div>
-            <RoomNamePanel text="JOIN ROOM"   placeholderText={this.placeholderText} handleSubmit={this.joinRoom.bind(this)} />
+          <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '30%', }}>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+              <div style={{textAlign: 'center', paddingBottom: '10px', }}>
+                Create a room: <br/>
+              </div>
+
+              <EnterRoomNamePanel text="CREATE" placeholderText={this.placeholderText} startingText={startingRoomName()} handleSubmit={this.createRoom.bind(this)}/>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '30%',  }}>
+            <RoomsList roomsArray={this.state.roomsArray} />
           </div>
         </div>
       );
@@ -134,7 +147,7 @@ class App extends React.Component {
 
   }
 
-  requestList = (event) => {
+  requestList = (_event) => {
       this.socket.send('L: \n');
   }
 

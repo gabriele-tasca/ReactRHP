@@ -8,20 +8,17 @@ html, body, #root, #root>div {
   margin: 0px;
 }
 
-#ball {
-  background-color: darkblue;
-  position: absolute;
-  transform: translateY(5px); 
-  height: 30px;
-  width: 30px;
-  border-radius:30px;
+.maintitle {
+  color: rgb(0, 72, 139);
+  font-size: 42px;
+  text-align:center;
+
 }
 
 .button3 {
   width: 100%;
   font-size: 24px;
   padding:0.1em 1.2em;
-  margin:0 10px 10px 0;
   border-radius:70px;
   border: 2px solid #4095c6;
   font-weight:700;
@@ -40,11 +37,29 @@ html, body, #root, #root>div {
   }
 }
 
+
+.textField1 {
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+  border-radius:70px;
+  outline: none;
+  transition: all 0.15s;
+}
+.textField1:hover {
+  background-color: #effafd;
+}
+.textField1:focus {
+  background-color: #dff6ff;
+}
+
+
+
 .listbutton {
   width: 100%;
   font-size: 24px;
   padding:0.1em 1.2em;
-  margin:0 10px 10px 0;
+  margin:0 0px 12px 0;
   border-radius:70px;
   border: 2px solid #4095c6;
   font-weight:700;
@@ -63,58 +78,6 @@ html, body, #root, #root>div {
   }
 }
 
-
-
-.button3small {
-  font-size: 18px;
-  padding:0.3em 1.2em;
-  margin:0 10px 10px 0;
-  border-radius:70px;
-  border: 2px solid #4095c6;
-  font-weight:700;
-  color:#FFFFFF;
-  background-color:#4eb5f1;
-  text-align:center;
-  transition: all 0.15s;
-}
-
-.button3small:hover {
-  background-color:#4095c6;
-}
-@media all and (max-width:30em){
-  .button3small {
-    display:block;
-    margin:0.2em auto;
-  }
-} 
-
-.hidden {
-  display: none;
-}
-
-#content:hover~#b{
-  display: block;
-  background-color:#4095c6;
-  border: 2px solid #2e162e;
-
-}
-
-
-.textField1 {
-  font-size: 30px;
-  text-align: center;
-  border-radius:70px;
-  padding:0.1em 0.1em;
-  outline: none;
-  transition: all 0.15s;
-
-}
-.textField1:hover {
-  background-color: #effafd;
-}
-.textField1:focus {
-  background-color: #dff6ff;
-}
 
 .align-container {
   display: flex;
@@ -150,6 +113,12 @@ html, body, #root, #root>div {
   outline: none;
 }
 
+.secondarytext {
+  color: #777777;
+  font-size: large;
+  text-align: center;
+
+}
 
 
 .listEntry {
@@ -162,3 +131,27 @@ html, body, #root, #root>div {
   outline: none;
   transition: all 0.15s;
 }
+
+/* 
+.button3small {
+  font-size: 18px;
+  padding:0.3em 1.2em;
+  margin:0 10px 10px 0;
+  border-radius:70px;
+  border: 2px solid #4095c6;
+  font-weight:700;
+  color:#FFFFFF;
+  background-color:#4eb5f1;
+  text-align:center;
+  transition: all 0.15s;
+}
+
+.button3small:hover {
+  background-color:#4095c6;
+}
+@media all and (max-width:30em){
+  .button3small {
+    display:block;
+    margin:0.2em auto;
+  }
+}  */
