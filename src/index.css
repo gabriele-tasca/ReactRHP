@@ -11,11 +11,15 @@ html, body, #root, #root>div {
 .mainbar-div{
   display: flex;
   flex-direction: row;
+  overflow-y: clip;
+  height:100%;
 }
 @media only screen and (max-width: 950px) {
   .mainbar-div {
     display: flex;
     flex-direction: column;
+    width:100%;
+    overflow-x: clip;
   }
 } 
 
@@ -50,7 +54,7 @@ html, body, #root, #root>div {
 @media only screen and (max-width: 950px) {
   .mainbar-button-div {
     display:flex;
-    align-items:flex-end;
+    align-items:flex-start;
     flex-direction: row;
     justify-content:space-around;
     align-content:center;
@@ -76,8 +80,6 @@ html, body, #root, #root>div {
   align-items: center;
 
   text-decoration: none;
-
-  
 }
 .mainbarbutton-active:hover {
   background-color:#4095c6;
@@ -118,7 +120,23 @@ html, body, #root, #root>div {
   text-align:center;
   margin-bottom: 15px;
 
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+
+  transition: all 0.15s;
+
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
 }
+@media only screen and (max-width: 950px) {
+  .maintitle {
+  max-width: 100px;
+  }
+} 
 
 .button3 {
   width: 100%;

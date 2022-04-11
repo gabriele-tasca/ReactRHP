@@ -85,11 +85,13 @@ class App extends React.Component {
           <div className='mainbar-div'>
             <div className='mainbar' >
               
-              <div className='maintitle'  >
-                Rhymepong React
-              </div>
+
                 
               <div className='mainbar-button-div'>
+
+                <div className='maintitle'  >
+                  <div style={{textAlign:'center', width:'100%'}}>React RhP</div>
+                </div>
 
                 <NavLink to="/" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive mainbarbutton-active")} > 
                          <div style={{textAlign:'center', width:'100%'}}>Play</div>
@@ -107,14 +109,15 @@ class App extends React.Component {
             <Routes>
 
               <Route path="/" element={ 
-                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', height: '100%' }}>
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', height: '100%',
+                flexWrap:'wrap' }}>
                   
                   {/* <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width: '30%', padding: '10px'}} 
                         className='maintitle'>
                         <b> Rhymepong React </b>
                       </div> */}
 
-                  <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '45%', }}>
+                  <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width:'100%', maxWidth: '500px', }}>
                     <div style={{display: 'flex', flexDirection: 'column', width:'100%'}}>
 
                       <div style={{textAlign: 'center', paddingBottom: '10px', }}>
@@ -126,9 +129,10 @@ class App extends React.Component {
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '45%', paddingRight:'10px' }}>
+                  <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width:'100%', maxWidth: '500px', paddingRight:'10px' }}>
                     <RoomsList roomsArray={this.state.roomsArray} />
                   </div>
+
                 </div>
               }></Route>
 

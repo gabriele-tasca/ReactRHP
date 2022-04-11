@@ -18,11 +18,7 @@ export class About extends React.Component {
                     <GridEntry icon={<IconRoute/>} text={'DOM routing allows to join rooms via direct link'}/>
                     <GridEntry icon={<IconBolt/>} text={'The room list is synced to the server in real time'}/>
 
-                    {/* <div className='gridentry'>Responsive UI adapts to the screen size</div>
 
-                    <div className='gridentry'>DOM routing allows to join rooms via direct link </div>
-
-                    <div className='gridentry'>The room list is updated in real time based on data provided by the WS server</div> */}
 
 
                 </div>
