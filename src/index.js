@@ -12,6 +12,9 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  useParams,
+  Outlet,
+  useNavigate
 } from "react-router-dom";
 
 
@@ -71,6 +74,7 @@ class App extends React.Component {
 
 
   render() {
+
       return (
            
         <BrowserRouter>
@@ -91,12 +95,16 @@ class App extends React.Component {
                     <About/>
                   }/>
 
+                  <Route path="game" element={ <Outlet/> }>
+                    <Route path=":roomName" element={ <Game/> }/>
+                  </Route>
+
                   <Route
                         path="*"
                         element={
-                          <main style={{ padding: "1rem" }}>
-                            <p>You followed an invalid link.</p>
-                          </main>
+                            <div style={{display:'flex',justifyContent:'center',alignItems:'center', height:'100%', width:'100%'}}>
+                              <div className='gridentrytop' >You followed an invalid link.</div>
+                            </div>
                         }
                       />
 
@@ -133,30 +141,26 @@ class App extends React.Component {
   }
 
   createRoom = (room_name) => {
-    this.setState((state, props) => ({
-      counter: state.roomsArray.push("fake room "+String(Math.floor(Math.random()*(999-100+1)+100))  )
-    }));
+    // this.setState((state, props) => ({
+    //   counter: state.roomsArray.push("fake room "+String(Math.floor(Math.random()*(999-100+1)+100))  )
+    // }));
 
-    // if (this.localCheckRoomName(room_name) === true) {
-    //   this.socket.send('Z: '+room_name+'\n');
-    //   // this.switchToGame(true);
-    // }
+    if (this.localCheckRoomName(room_name) === true) {
+      this.socket.send('Z: '+room_name+'\n');
+      this.switchToGame(true, room_name);
+    }
   }
 
   joinRoom (room_name) {
     if (this.localCheckRoomName(room_name) === true) {
-      this.switchToGame(false)
+      this.switchToGame(false, room_name)
     }
   }
 
 
-
-  switchToGame = (created) => {
-    if (created) {
-      this.setState({phase: Phase.GameLobby, host: true});
-    } else {
-      this.setState({phase: Phase.GameLobby, host: false});
-    }
+  switchToGame = (created, room_name) => {
+    // const navigate = useNavigate();
+    // navigate("/game/cringe");
   }
 
   switchToHome = () => {
@@ -171,4 +175,6 @@ class App extends React.Component {
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(<App tab="home" />);
+
+
 

@@ -14,6 +14,7 @@ export class EnterRoomNamePanel extends React.Component {
     handleSubmit(event) {
       event.preventDefault();
       this.props.handleSubmit(this.state.value)
+      this.props.navigateFunc("/game/"+ this.state.value)
     }
   
     render() {
