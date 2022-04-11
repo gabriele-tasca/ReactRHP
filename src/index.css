@@ -5,30 +5,33 @@ body {
 html, body, #root, #root>div {  
   height: 100%;
   width: 100%;
-  margin: 0px;
+  margin: 0 !important;
+  overflow-x: clip;
+  overflow-y: clip;
 }
 
-.mainbar-div{
+.bar-screen-div{
   display: flex;
   flex-direction: row;
-  overflow-y: clip;
   height:100%;
+  width:100%;
+  margin: 0 !important;
 }
 @media only screen and (max-width: 950px) {
-  .mainbar-div {
+  .bar-screen-div {
     display: flex;
     flex-direction: column;
+    height:100%;
     width:100%;
-    overflow-x: clip;
+    margin: 0 !important;
+
   }
 } 
 
 .mainbar {
   box-shadow: 0px 2px 5px lightblue;
-  padding: 20px;
-  padding-bottom: 30px;
-  padding-right: 40px;
   width: 17%;
+  height: auto;
 
   display: flex;
   flex-direction: column;
@@ -38,10 +41,38 @@ html, body, #root, #root>div {
   .mainbar {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    width: 100%
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    margin: 0 !important;
+
   }
-} 
+}
+
+.mainscreen {
+  /* padding: 20px;
+  padding-bottom: 30px;
+  padding-right: 40px; */
+  width: 83%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+@media only screen and (max-width: 950px) {
+  .mainscreen {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    height: 85%;
+    overflow-y: auto;
+    overflow-x: clip;
+
+  }
+}
+
 
 .mainbar-button-div{
   display:flex;
@@ -50,6 +81,7 @@ html, body, #root, #root>div {
   justify-items:space-around;
   align-content:center;
   flex-wrap:wrap;
+  padding:30px;
 }
 @media only screen and (max-width: 950px) {
   .mainbar-button-div {
@@ -65,7 +97,7 @@ html, body, #root, #root>div {
 
 .mainbarbutton-active {
   font-size: 22px;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 10px;
   width: 100%;
   padding: 5px;

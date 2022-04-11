@@ -2,12 +2,11 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 
-// import {styles} from "./styles";
-
 import { Game } from './game'
+import { MainBar } from './MainBar'
 import { About } from './about'
-import { RoomsList } from './RoomsList'
-import { EnterRoomNamePanel } from './EnterRoomNamePanel'
+import { RoomSelect } from './RoomSelect'
+
 
 import {
   BrowserRouter,
@@ -15,11 +14,8 @@ import {
   Route,
 } from "react-router-dom";
 
-import { NavLink } from "react-router-dom";
 
-function randomRoomName () {
-  return "room"+String(Math.floor(Math.random()*(999-100+1)+100));
-}
+
 
 
 class Phase {
@@ -37,9 +33,7 @@ class Phase {
 const basePlaceholderText = "room name";
 // const PlaceholderTextAlert = "must not be empty"
 
-function startingRoomName () {
-  return randomRoomName();
-}
+
 
 class App extends React.Component {
   constructor(props) {
@@ -47,8 +41,7 @@ class App extends React.Component {
     this.state = {
       active: true,
       room_name: null,
-      phase: Phase.Home,
-      // phase: Phase.Game, // remove
+
       host: null,
       roomsArray: []
     };
@@ -78,80 +71,47 @@ class App extends React.Component {
 
 
   render() {
-    if (this.state.phase === Phase.Home) {
       return (
-          <BrowserRouter>
-          
-          <div className='mainbar-div'>
-            <div className='mainbar' >
-              
+           
+        <BrowserRouter>
 
-                
-              <div className='mainbar-button-div'>
+            <div className='bar-screen-div'>
 
-                <div className='maintitle'  >
-                  <div style={{textAlign:'center', width:'100%'}}>React RhP</div>
-                </div>
+              <MainBar/>
 
-                <NavLink to="/" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive mainbarbutton-active")} > 
-                         <div style={{textAlign:'center', width:'100%'}}>Play</div>
-                </NavLink>
+              <div className='mainscreen'>
+
+                <Routes>
+
+                  <Route path="/" element={ 
+                    <RoomSelect roomsArray={this.state.roomsArray} handleSubmit={this.createRoom} />
+                  }/>
+
+                  <Route path="about" style={{height: '100%', width: '100%'}} element={ 
+                    <About/>
+                  }/>
+
+                  <Route
+                        path="*"
+                        element={
+                          <main style={{ padding: "1rem" }}>
+                            <p>You followed an invalid link.</p>
+                          </main>
+                        }
+                      />
 
 
-                <NavLink to="/more/about" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive mainbarbutton-active")} > 
-                <div style={{textAlign:'center', width:'100%'}}>About</div>
-                </NavLink>
+                </Routes>
 
               </div>
 
             </div>
 
-            <Routes>
-
-              <Route path="/" element={ 
-                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', height: '100%',
-                flexWrap:'wrap' }}>
-                  
-                  {/* <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width: '30%', padding: '10px'}} 
-                        className='maintitle'>
-                        <b> Rhymepong React </b>
-                      </div> */}
-
-                  <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width:'100%', maxWidth: '500px', }}>
-                    <div style={{display: 'flex', flexDirection: 'column', width:'100%'}}>
-
-                      <div style={{textAlign: 'center', paddingBottom: '10px', }}>
-                        Create a room: <br/>
-                      </div>
-
-                      <EnterRoomNamePanel text="CREATE" placeholderText={this.placeholderText} startingText={startingRoomName()} handleSubmit={this.createRoom} />
-                    
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width:'100%', maxWidth: '500px', paddingRight:'10px' }}>
-                    <RoomsList roomsArray={this.state.roomsArray} />
-                  </div>
-
-                </div>
-              }></Route>
-
-          <Route path="more/about" element={ 
-            <About/>
-          }/>
-
-          </Routes>
-
-
-          </div>
         </BrowserRouter>
+
+        
       );
-    }
-    else if (this.state.phase === Phase.Game || this.state.phase === Phase.GameLobby) {
-        return (
-          <Game quitCallback={this.switchToHome} />
-        );
-    }
+
 
   }
 
