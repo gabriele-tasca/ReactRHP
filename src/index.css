@@ -8,22 +8,62 @@ html, body, #root, #root>div {
   margin: 0px;
 }
 
+.mainbar-div{
+  display: flex;
+  flex-direction: row;
+}
+@media only screen and (max-width: 950px) {
+  .mainbar-div {
+    display: flex;
+    flex-direction: column;
+  }
+} 
+
 .mainbar {
   box-shadow: 0px 2px 5px lightblue;
   padding: 20px;
   padding-bottom: 30px;
   padding-right: 40px;
+  width: 17%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
+@media only screen and (max-width: 950px) {
+  .mainbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%
+  }
+} 
 
+.mainbar-button-div{
+  display:flex;
+  align-items:flex-end;
+  flex-direction: column;
+  justify-items:space-around;
+  align-content:center;
+  flex-wrap:wrap;
+}
+@media only screen and (max-width: 950px) {
+  .mainbar-button-div {
+    display:flex;
+    align-items:flex-end;
+    flex-direction: row;
+    justify-content:space-around;
+    align-content:center;
+    width: 100%;
 
-
+  }
+} 
 
 .mainbarbutton-active {
   font-size: 22px;
-  width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
-
+  width: 100%;
   padding: 5px;
   border-radius:8px;
   border: 2px solid #4095c6;
@@ -36,6 +76,8 @@ html, body, #root, #root>div {
   align-items: center;
 
   text-decoration: none;
+
+  
 }
 .mainbarbutton-active:hover {
   background-color:#4095c6;
@@ -46,25 +88,16 @@ html, body, #root, #root>div {
     margin:0.2em auto;
   }
 }
+@media only screen and (max-width: 950px) {
+  .mainbarbutton-active {
+    max-width: 100px;
+  }
+} 
 
 .mainbarbutton-inactive {
-  font-size: 22px;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-
-  padding: 5px;
-  border-radius:8px;
   border: 2px solid #FFFFFF;
-  font-weight:700;
+  background-color:#FFFFFF;
   color:#777777;
-  /* background-color:#4eb5f1; */
-  transition: all 0.15s;
-
-  display: flex;
-  align-items: center;
-
-  text-decoration: none;
 }
 .mainbarbutton-inactive:hover {
   background-color:#b6d9ee;
@@ -77,6 +110,7 @@ html, body, #root, #root>div {
     margin:0.2em auto;
   }
 }
+
 
 .maintitle {
   color: rgb(0, 72, 139);
@@ -246,7 +280,8 @@ html, body, #root, #root>div {
 }
 
 .gridentrytop {
-  width: 100%;
+  
+  height: 70px;
   padding: 20px;
   color: #888888;
   font-size: 20px;

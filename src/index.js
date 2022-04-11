@@ -13,7 +13,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 
 import { NavLink } from "react-router-dom";
@@ -83,21 +82,21 @@ class App extends React.Component {
       return (
           <BrowserRouter>
           
-          <div style={{display: 'flex', flexDirection: 'row', }}>
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', width:'17%'}} className='mainbar' >
+          <div className='mainbar-div'>
+            <div className='mainbar' >
               
               <div className='maintitle'  >
                 Rhymepong React
               </div>
                 
-              <div style={{padding: '5px'}}>
+              <div className='mainbar-button-div'>
 
-                <NavLink to="/" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive")} > 
+                <NavLink to="/" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive mainbarbutton-active")} > 
                          <div style={{textAlign:'center', width:'100%'}}>Play</div>
                 </NavLink>
 
 
-                <NavLink to="/more/about" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive")} > 
+                <NavLink to="/more/about" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive mainbarbutton-active")} > 
                 <div style={{textAlign:'center', width:'100%'}}>About</div>
                 </NavLink>
 
