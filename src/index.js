@@ -5,10 +5,18 @@ import './index.css';
 // import {styles} from "./styles";
 
 import { Game } from './game'
+import { About } from './about'
 import { RoomsList } from './RoomsList'
 import { EnterRoomNamePanel } from './EnterRoomNamePanel'
 
-import { BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+
+import { NavLink } from "react-router-dom";
 
 function randomRoomName () {
   return "room"+String(Math.floor(Math.random()*(999-100+1)+100));
@@ -74,52 +82,63 @@ class App extends React.Component {
     if (this.state.phase === Phase.Home) {
       return (
           <BrowserRouter>
-
+          
           <div style={{display: 'flex', flexDirection: 'row', }}>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', width:'17%'}} className='mainbar' >
-            
+              
               <div className='maintitle'  >
                 Rhymepong React
               </div>
                 
               <div style={{padding: '5px'}}>
 
-                <div>
-                  <Link to="/expenses">Expenses</Link>
-                  <button className='mainbarbutton'> Play </button>
-                </div>
+                <NavLink to="/" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive")} > 
+                         <div style={{textAlign:'center', width:'100%'}}>Play</div>
+                </NavLink>
 
-                <div>
-                  <button className='mainbarbutton'> About </button>
-                </div>
+
+                <NavLink to="/more/about" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive")} > 
+                <div style={{textAlign:'center', width:'100%'}}>About</div>
+                </NavLink>
+
               </div>
 
             </div>
 
+            <Routes>
 
-            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', height: '100%' }}>
-              
-              {/* <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width: '30%', padding: '10px'}} 
-                    className='maintitle'>
-                <b> Rhymepong React </b>
-              </div> */}
+              <Route path="/" element={ 
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', height: '100%' }}>
+                  
+                  {/* <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width: '30%', padding: '10px'}} 
+                        className='maintitle'>
+                        <b> Rhymepong React </b>
+                      </div> */}
 
-              <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '45%', }}>
-                <div style={{display: 'flex', flexDirection: 'column', width:'100%'}}>
+                  <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '45%', }}>
+                    <div style={{display: 'flex', flexDirection: 'column', width:'100%'}}>
 
-                  <div style={{textAlign: 'center', paddingBottom: '10px', }}>
-                    Create a room: <br/>
+                      <div style={{textAlign: 'center', paddingBottom: '10px', }}>
+                        Create a room: <br/>
+                      </div>
+
+                      <EnterRoomNamePanel text="CREATE" placeholderText={this.placeholderText} startingText={startingRoomName()} handleSubmit={this.createRoom} />
+                    
+                    </div>
                   </div>
 
-                  <EnterRoomNamePanel text="CREATE" placeholderText={this.placeholderText} startingText={startingRoomName()} handleSubmit={this.createRoom} />
-                
+                  <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '45%', paddingRight:'10px' }}>
+                    <RoomsList roomsArray={this.state.roomsArray} />
+                  </div>
                 </div>
-              </div>
+              }></Route>
 
-              <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '45%', paddingRight:'10px' }}>
-                <RoomsList roomsArray={this.state.roomsArray} />
-              </div>
-            </div>
+          <Route path="more/about" element={ 
+            <About/>
+          }/>
+
+          </Routes>
+
 
           </div>
         </BrowserRouter>
