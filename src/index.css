@@ -226,4 +226,19 @@ html, body, #root, #root>div {
   }
 }  */
 
-.gridcontainer
+.gridcontainer {
+  display: grid;
+  width: 100vh;
+  padding: 10%;
+  grid-template-columns: 40% 40% 40%;
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+}
+
+.gridentry {
+  padding: 20px;
+  color: #888888;
+  font-size: 20px;
+  text-align: center;
+}
