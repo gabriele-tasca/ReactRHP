@@ -8,17 +8,48 @@ html, body, #root, #root>div {
   margin: 0px;
 }
 
+.mainbar {
+  box-shadow: 0px 2px 5px lightblue;
+  padding: 20px;
+  padding-bottom: 30px;
+}
+
+.mainbarbutton {
+  font-size: 22px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  padding: 5px;
+  border-radius:8px;
+  border: 2px solid #4095c6;
+  font-weight:700;
+  color:#FFFFFF;
+  background-color:#4eb5f1;
+  text-align:center;
+  transition: all 0.15s;
+}
+.mainbarbutton:hover {
+  background-color:#4095c6;
+}
+@media all and (max-width:30em){
+  .mainbarbutton {
+    display:block;
+    margin:0.2em auto;
+  }
+}
+
 .maintitle {
   color: rgb(0, 72, 139);
-  font-size: 42px;
+  font-size: 30px;
   text-align:center;
+  margin-bottom: 15px;
 
 }
 
 .button3 {
   width: 100%;
-  font-size: 24px;
-  padding:0.1em 1.2em;
+  font-size: 30px;
   border-radius:70px;
   border: 2px solid #4095c6;
   font-weight:700;
@@ -37,11 +68,11 @@ html, body, #root, #root>div {
   }
 }
 
-
 .textField1 {
   width: 100%;
   font-size: 30px;
   text-align: center;
+
   border-radius:70px;
   outline: none;
   transition: all 0.15s;
@@ -57,7 +88,7 @@ html, body, #root, #root>div {
 
 .listbutton {
   width: 100%;
-  font-size: 24px;
+  font-size: 30px;
   padding:0.1em 1.2em;
   margin:0 0px 12px 0;
   border-radius:70px;

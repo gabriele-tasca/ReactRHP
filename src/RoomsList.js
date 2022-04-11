@@ -5,16 +5,16 @@ export class RoomsList extends React.Component {
     render() {
         return (
 
-        <div style={{  display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '100%', height: '100%',  
+        <div style={{  display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '100%', height: '100%',  transition: 'all 1s' ,
     }}>
             
-            <div style={{  width:'100%', maxHeight:'90%', overflowY:'auto', padding: '10px', }}> 
+            <div style={{  width:'100%', maxHeight:'90%', overflowY:'auto', padding: '10px', transition: 'all 1s' ,}}> 
 
-                    <div style={{display: 'flex', flexDirection: 'column',   width: '100%', transition: 'all 0.15s' ,
+                    <div style={{display: 'flex', flexDirection: 'column',   width: '100%', transition: 'all 1s' ,
                     
                     }}>
 
-                        <div style={{textAlign: 'center', paddingBottom: '10px', transition: 'all 0.15s'}}>
+                        <div style={{textAlign: 'center', paddingBottom: '10px', transition: 'all 1s'}}>
                             Join a room: <br/>
                         </div>
 

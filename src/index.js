@@ -2,61 +2,18 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 
-import {styles} from "./styles";
+// import {styles} from "./styles";
 
 import { Game } from './game'
 import { RoomsList } from './RoomsList'
+import { EnterRoomNamePanel } from './EnterRoomNamePanel'
 
-
+import { BrowserRouter } from "react-router-dom";
 
 function randomRoomName () {
   return "room"+String(Math.floor(Math.random()*(999-100+1)+100));
 }
 
-
-
-
-class EnterRoomNamePanel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: this.props.startingText}; // non-placeholder default text
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.handleSubmit(this.state.value)
-  }
-
-  render() {
-    return (
-      <div style={{justifyContent: 'center', padding: '0px', width: '100%', }}>
-
-        <form onSubmit={this.handleSubmit}> 
-          
-          <div style={{padding: '10px', width: '100%', }}>
-            <input 
-              type="text" 
-              value={this.state.value} 
-              placeholder={this.props.placeholderText} 
-              className='textField1'
-              onChange={this.handleChange} />
-          </div>
-
-          <div style={{padding: '10px', width: '100%',  }}> 
-            <input type="submit" value={this.props.text} className='button3'/>
-          </div>
-
-        </form>
-      </div>
-
-    );
-  }
-}
 
 class Phase {
   // Create new instances of the same class as static attributes
@@ -114,32 +71,61 @@ class App extends React.Component {
 
 
   render() {
-    if (this.state.phase == Phase.Home) {
+    if (this.state.phase === Phase.Home) {
       return (
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: '100%' }}>
+          <BrowserRouter>
 
-          <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width: '30%', padding: '10px'}} 
-                className='maintitle'>
-            <b> Rhymepong React </b>
-          </div>
+          <div style={{display: 'flex', flexDirection: 'row', }}>
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', width:'17%'}} className='mainbar' >
+            
+              <div className='maintitle'  >
+                Rhymepong React
+              </div>
+                
+              <div style={{padding: '5px'}}>
 
-          <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '30%', }}>
-            <div style={{display: 'flex', flexDirection: 'column'}}>
-              <div style={{textAlign: 'center', paddingBottom: '10px', }}>
-                Create a room: <br/>
+                <div>
+                  <Link to="/expenses">Expenses</Link>
+                  <button className='mainbarbutton'> Play </button>
+                </div>
+
+                <div>
+                  <button className='mainbarbutton'> About </button>
+                </div>
               </div>
 
-              <EnterRoomNamePanel text="CREATE" placeholderText={this.placeholderText} startingText={startingRoomName()} handleSubmit={this.createRoom.bind(this)}/>
             </div>
-          </div>
 
-          <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '30%',  }}>
-            <RoomsList roomsArray={this.state.roomsArray} />
+
+            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', height: '100%' }}>
+              
+              {/* <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width: '30%', padding: '10px'}} 
+                    className='maintitle'>
+                <b> Rhymepong React </b>
+              </div> */}
+
+              <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '45%', }}>
+                <div style={{display: 'flex', flexDirection: 'column', width:'100%'}}>
+
+                  <div style={{textAlign: 'center', paddingBottom: '10px', }}>
+                    Create a room: <br/>
+                  </div>
+
+                  <EnterRoomNamePanel text="CREATE" placeholderText={this.placeholderText} startingText={startingRoomName()} handleSubmit={this.createRoom} />
+                
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center',  width: '45%', paddingRight:'10px' }}>
+                <RoomsList roomsArray={this.state.roomsArray} />
+              </div>
+            </div>
+
           </div>
-        </div>
+        </BrowserRouter>
       );
     }
-    else if (this.state.phase == Phase.Game || this.state.phase == Phase.GameLobby) {
+    else if (this.state.phase === Phase.Game || this.state.phase === Phase.GameLobby) {
         return (
           <Game quitCallback={this.switchToHome} />
         );
@@ -161,18 +147,22 @@ class App extends React.Component {
   }
 
   localCheckRoomName = (room_name) => {
-    return (room_name != "");
+    return (room_name !== "");
   }
 
   createRoom = (room_name) => {
-    if (this.localCheckRoomName(room_name) == true) {
-      this.socket.send('Z: '+room_name+'\n');
-      // this.switchToGame(true);
-    }
+    this.setState((state, props) => ({
+      counter: state.roomsArray.push("fake room "+String(Math.floor(Math.random()*(999-100+1)+100))  )
+    }));
+
+    // if (this.localCheckRoomName(room_name) === true) {
+    //   this.socket.send('Z: '+room_name+'\n');
+    //   // this.switchToGame(true);
+    // }
   }
 
   joinRoom (room_name) {
-    if (this.localCheckRoomName(room_name) == true) {
+    if (this.localCheckRoomName(room_name) === true) {
       this.switchToGame(false)
     }
   }
