@@ -237,6 +237,16 @@ html, body, #root, #root>div {
 }
 
 .gridentry {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  color: #888888;
+  font-size: 20px;
+  text-align: center;
+}
+
+.gridentrytop {
+  width: 100%;
   padding: 20px;
   color: #888888;
   font-size: 20px;
