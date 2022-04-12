@@ -128,8 +128,7 @@ class App extends React.Component {
           <div className='mainscreen'>
 
 
-                <RoomSelect roomsArray={this.state.roomsArray} handleSubmit={this.createRoom} />
-
+            <div>test </div>
 
 
           </div>
