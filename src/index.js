@@ -11,6 +11,7 @@ import { RoomSelect } from './RoomSelect'
 
 import {
   BrowserRouter,
+  HashRouter,
   Routes,
   Route,
   // useParams,
