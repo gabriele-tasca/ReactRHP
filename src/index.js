@@ -8,6 +8,8 @@ import { About } from './about'
 import { RoomSelect } from './RoomSelect'
 
 
+const HOME = '/ReactRHP/'
+
 import {
   BrowserRouter,
   Routes,
@@ -89,15 +91,15 @@ class App extends React.Component {
 
                 <Routes>
 
-                  <Route path="/" element={ 
+                  <Route path={HOME} element={ 
                     <RoomSelect roomsArray={this.state.roomsArray} handleSubmit={this.createRoom} />
                   }/>
 
-                  <Route path="about" style={{height: '100%', width: '100%'}} element={ 
+                  <Route path={HOME+"about"} style={{height: '100%', width: '100%'}} element={ 
                     <About/>
                   }/>
 
-                  <Route path="game" element={ <Outlet/> }>
+                  <Route path={HOME+"game"} element={ <Outlet/> }>
                     <Route path=":roomName" element={ <Game/> }/>
                   </Route>
 
