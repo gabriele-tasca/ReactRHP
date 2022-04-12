@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {HOME} from './index'
+
 export class EnterRoomNamePanel extends React.Component {
     constructor(props) {
       super(props);

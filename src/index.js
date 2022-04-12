@@ -8,7 +8,6 @@ import { About } from './about'
 import { RoomSelect } from './RoomSelect'
 
 
-const HOME = '/ReactRHP/'
 
 import {
   BrowserRouter,
@@ -20,6 +19,7 @@ import {
 } from "react-router-dom";
 
 
+export const HOME = '/ReactRHP/'
 
 const WEBSOCKET_URL = 'wss://mysterious-castle-01746.herokuapp.com:443'
 // const WEBSOCKET_URL = ''ws://localhost:9080''

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import {HOME} from './index'
 
 
 export class MainBar extends React.Component{
@@ -13,12 +14,12 @@ export class MainBar extends React.Component{
                         <div style={{textAlign:'center', width:'100%'}}>  RhP React </div>
                     </div>
 
-                    <NavLink to="/" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive mainbarbutton-active")} > 
+                    <NavLink to={HOME} className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive mainbarbutton-active")} > 
                             <div style={{textAlign:'center', width:'100%'}}>Play</div>
                     </NavLink>
 
 
-                    <NavLink to="about" className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive mainbarbutton-active")} > 
+                    <NavLink to={HOME+"about"} className={ ({ isActive }) => (isActive ? "mainbarbutton-active" : "mainbarbutton-inactive mainbarbutton-active")} > 
                         <div style={{textAlign:'center', width:'100%', height:'100%'}}>About</div>
                     </NavLink>
 
