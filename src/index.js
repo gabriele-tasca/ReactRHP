@@ -81,7 +81,7 @@ class App extends React.Component {
 
       return (
            
-        <BrowserRouter>
+        <HashRouter>
 
             <div className='bar-screen-div'>
 
@@ -119,7 +119,7 @@ class App extends React.Component {
 
             </div>
 
-        </BrowserRouter>
+        </HashRouter>
 
 
         // no router test
