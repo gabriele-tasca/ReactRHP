@@ -1,5 +1,8 @@
 import React from 'react';
 
+import {HOME} from './index'
+
+
 export class RoomsList extends React.Component {
   
     render() {
@@ -18,9 +21,7 @@ export class RoomsList extends React.Component {
                             Join a room: <br/>
                         </div>
 
-                        {arrayItems(this.props.roomsArray)}
-                        {/* {arrayItems(["a","b","e","g","ry","wu","wertu",])} */}
-                        {/* {arrayItems(["a","b","e","g","ry","wu","wertu","e5","6uiq","a5y","ey","w5u","w4u","w4","6u4","wuw","5uw","45u"])} */}
+                        {arrayItems( this.props.roomsArray, this.props.navigateFunc )}
                         {/* {arrayItems(["a","b","e","g","ry","wu","wertu","e5","6uiq","a5y","ey","w5u","w4u","w4","6u4","wuw","5uw","45u"])} */}
                     </div>
 
@@ -34,10 +35,10 @@ export class RoomsList extends React.Component {
 }
   
 
-function arrayItems(array) {
+function arrayItems(array, navigateFunc) {
     if (array.length !== 0) {
         return array.map((name) =>
-        <RoomPanel key={name} name={name}/>
+        <RoomPanel key={name} name={name} navigateFunc={navigateFunc}/>
         );
     } else {
         return (
@@ -52,6 +53,7 @@ export class RoomPanel extends React.Component {
         super(props);
         this.state = {reveal: false}
         this.appear = this.appear.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.timer = null
     }
 
@@ -64,33 +66,20 @@ export class RoomPanel extends React.Component {
     render() {
         return (
 
-            <button className='listbutton' style={this.state.reveal? {opacity: '100'}:{opacity: '0'}}>
+            <button className='listbutton' onClick={this.handleClick} style={this.state.reveal? {opacity: '100'}:{opacity: '0'}}>
                 {this.props.name} 
             </button>
 
         );
     }
 
-    appear = () => {
+    handleClick () {
+        this.props.navigateFunc(HOME+"game/"+ this.props.name)
+    }
 
+    appear = () => {
         this.setState({reveal: true})
         clearTimeout(this.timer); // remove timer
-
     };
 }
 
-
-export class HideableButton extends React.Component {
-
-    render() {
-        return (
-            <button 
-            className='button3small' 
-            style={this.props.hidden? {opacity: '0'}:undefined}  
-            > 
-                {this.props.text} 
-            </button>
-            );
-    }
-
-}

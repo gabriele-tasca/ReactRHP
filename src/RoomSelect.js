@@ -33,7 +33,7 @@ export function RoomSelect (props) {
             </div>
 
             <div style={{ display: 'flex', justifyItems: 'center', alignItems: 'center', width:'100%', maxWidth: '500px', paddingRight:'10px' }}>
-                <RoomsList roomsArray={props.roomsArray} />
+                <RoomsList roomsArray={props.roomsArray} navigateFunc={navigate}/>
             </div>
 
         </div>
