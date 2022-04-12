@@ -79,45 +79,63 @@ class App extends React.Component {
 
       return (
            
-        <BrowserRouter>
+        // <BrowserRouter>
 
-            <div className='bar-screen-div'>
+        //     <div className='bar-screen-div'>
 
-              <MainBar/>
+        //       <MainBar/>
 
-              <div className='mainscreen'>
+        //       <div className='mainscreen'>
 
-                <Routes>
+        //         <Routes>
 
-                  <Route path="/" element={ 
-                    <RoomSelect roomsArray={this.state.roomsArray} handleSubmit={this.createRoom} />
-                  }/>
+        //           <Route path="/" element={ 
+        //             <RoomSelect roomsArray={this.state.roomsArray} handleSubmit={this.createRoom} />
+        //           }/>
 
-                  <Route path="about" style={{height: '100%', width: '100%'}} element={ 
-                    <About/>
-                  }/>
+        //           <Route path="about" style={{height: '100%', width: '100%'}} element={ 
+        //             <About/>
+        //           }/>
 
-                  <Route path="game" element={ <Outlet/> }>
-                    <Route path=":roomName" element={ <Game/> }/>
-                  </Route>
+        //           <Route path="game" element={ <Outlet/> }>
+        //             <Route path=":roomName" element={ <Game/> }/>
+        //           </Route>
 
-                  <Route
-                        path="*"
-                        element={
-                            <div style={{display:'flex',justifyContent:'center',alignItems:'center', height:'100%', width:'100%'}}>
-                              <div className='gridentrytop' >You followed an invalid link.</div>
-                            </div>
-                        }
-                      />
+        //           <Route
+        //                 path="*"
+        //                 element={
+        //                     <div style={{display:'flex',justifyContent:'center',alignItems:'center', height:'100%', width:'100%'}}>
+        //                       <div className='gridentrytop' >You followed an invalid link.</div>
+        //                     </div>
+        //                 }
+        //               />
 
 
-                </Routes>
+        //         </Routes>
 
-              </div>
+        //       </div>
 
-            </div>
+        //     </div>
 
-        </BrowserRouter>
+        // </BrowserRouter>
+
+
+
+        <div className='bar-screen-div'>
+
+          <MainBar/>
+
+          <div className='mainscreen'>
+
+
+                <RoomSelect roomsArray={this.state.roomsArray} handleSubmit={this.createRoom} />
+
+
+
+          </div>
+
+        </div>
+
 
         
       );
