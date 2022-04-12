@@ -15,7 +15,7 @@ export function Game() {
         Game Placeholder Screen<br/>
         Room name: {params.roomName}<br/>
         Share Link:<br/> 
-        <div style={{fontSize:'22px', color:'#777777'}}>https://gabriele-tasca.github.io/ReactRHP/game/{params.roomName}</div>
+        <div style={{fontSize:'22px', color:'#777777'}}>https://gabriele-tasca.github.io/ReactRHP/#/game/{params.roomName}</div>
       </div>
     </div>
   );
