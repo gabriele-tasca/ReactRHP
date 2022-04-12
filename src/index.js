@@ -20,7 +20,7 @@ import {
 } from "react-router-dom";
 
 
-export const HOME = '/ReactRHP/'
+export const HOME = '/'
 
 const WEBSOCKET_URL = 'wss://mysterious-castle-01746.herokuapp.com:443'
 // const WEBSOCKET_URL = ''ws://localhost:9080''
