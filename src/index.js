@@ -61,13 +61,13 @@ class App extends React.Component {
 
   componentDidMount() {
     // Create WebSocket connection.
-    this.socket = new WebSocket(WEBSOCKET_URL);
+    // this.socket = new WebSocket(WEBSOCKET_URL);
 
     // Connection opened
-    this.socket.addEventListener('open', this.requestList);
+    // this.socket.addEventListener('open', this.requestList);
 
     // Listen for messages
-    this.socket.addEventListener('message', this.readMessage);
+    // this.socket.addEventListener('message', this.readMessage);
   }
 
   componentWillUnmount() {
@@ -123,7 +123,6 @@ class App extends React.Component {
 
         <div className='bar-screen-div'>
 
-          <MainBar/>
 
           <div className='mainscreen'>
 
