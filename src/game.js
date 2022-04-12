@@ -2,12 +2,8 @@ import React from 'react';
 import './index.css';
 
 import {
-  BrowserRouter,
-  Routes,
-  Route,
   useParams,
-  Outlet,
-  useNavigate,
+//   useNavigate,
 } from "react-router-dom";
 
 
@@ -89,82 +85,82 @@ export function Game() {
 
 
 
-class ChatBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''}; // non-placeholder default text
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+// class ChatBar extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {value: ''}; // non-placeholder default text
+//     this.handleChange = this.handleChange.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    // do checks here and not up, probably
-    this.props.passTextUp(this.state.value)
-    this.setState({value:''}); // clear text in bar
-  }
+//   handleChange(event) {
+//     this.setState({value: event.target.value});
+//   }
+//   handleSubmit(event) {
+//     event.preventDefault();
+//     // do checks here and not up, probably
+//     this.props.passTextUp(this.state.value)
+//     this.setState({value:''}); // clear text in bar
+//   }
 
-  render() {
-    return (
-      <div style={{display: 'flex', justifyContent: 'center', padding: '5px', width: '100%'}}>
-        <form onSubmit={this.handleSubmit}> 
-
-
-            <input 
-              type="text" 
-              value={this.state.value} 
-              placeholder='type here...'
-              className='textField1'
-              style={{width: '100%'}}
-              onChange={this.handleChange} 
-            />
-
-        </form>
-      </div>
-    );
-  }
-}
+//   render() {
+//     return (
+//       <div style={{display: 'flex', justifyContent: 'center', padding: '5px', width: '100%'}}>
+//         <form onSubmit={this.handleSubmit}> 
 
 
+//             <input 
+//               type="text" 
+//               value={this.state.value} 
+//               placeholder='type here...'
+//               className='textField1'
+//               style={{width: '100%'}}
+//               onChange={this.handleChange} 
+//             />
 
-
-
-function drawCircle(ctx, x, y, radius, fill) {
-  ctx.beginPath()
-  ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
-  if (fill) {
-    ctx.fillStyle = fill
-    ctx.fill()
-  }
-}
+//         </form>
+//       </div>
+//     );
+//   }
+// }
 
 
 
 
 
-{/* <div style={{ display: 'flex', flexDirection: 'column', width: '100%'}}>
-
-  <div style={{margin: '5px', display: 'flex', height: '80%'}}>
-
-    <div style={{width: '82%', border: 'solid'}}>
-      <canvas id="canvas" style={{position: 'absolute', border: 'solid'}} ></canvas>
-
-    </div>
-
-
-    <div style={{margin: '5px', padding: '5px', width: '16%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-      <button className='button3' onClick={this.handleQuitClick}> QUIT </button>
-      <button className='button3' onClick={this.handleQuitClick}> QUIT </button>
-    </div>
-
-  </div>
-
-  <div style={{ display: 'flex', justifyContent: 'center', height: '20%', width: '100%'}}>
-    <ChatBar passTextUp={this.enterText}/>
-  </div> 
+// function drawCircle(ctx, x, y, radius, fill) {
+//   ctx.beginPath()
+//   ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
+//   if (fill) {
+//     ctx.fillStyle = fill
+//     ctx.fill()
+//   }
+// }
 
 
-</div>*/}
+
+
+
+// {/* <div style={{ display: 'flex', flexDirection: 'column', width: '100%'}}>
+
+//   <div style={{margin: '5px', display: 'flex', height: '80%'}}>
+
+//     <div style={{width: '82%', border: 'solid'}}>
+//       <canvas id="canvas" style={{position: 'absolute', border: 'solid'}} ></canvas>
+
+//     </div>
+
+
+//     <div style={{margin: '5px', padding: '5px', width: '16%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+//       <button className='button3' onClick={this.handleQuitClick}> QUIT </button>
+//       <button className='button3' onClick={this.handleQuitClick}> QUIT </button>
+//     </div>
+
+//   </div>
+
+//   <div style={{ display: 'flex', justifyContent: 'center', height: '20%', width: '100%'}}>
+//     <ChatBar passTextUp={this.enterText}/>
+//   </div> 
+
+
+// </div>*/}

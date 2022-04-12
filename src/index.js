@@ -12,13 +12,15 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  useParams,
+  // useParams,
   Outlet,
-  useNavigate
+  // useNavigate
 } from "react-router-dom";
 
 
 
+const WEBSOCKET_URL = 'wss://mysterious-castle-01746.herokuapp.com:443'
+// const WEBSOCKET_URL = ''ws://localhost:9080''
 
 
 class Phase {
@@ -59,7 +61,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // Create WebSocket connection.
-    this.socket = new WebSocket('ws://localhost:9080');
+    this.socket = new WebSocket(WEBSOCKET_URL);
 
     // Connection opened
     this.socket.addEventListener('open', this.requestList);

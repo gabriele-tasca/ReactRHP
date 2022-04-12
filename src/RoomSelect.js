@@ -43,11 +43,7 @@ export function RoomSelect (props) {
         );
     }
 
-// function switchToGame() {
-//     const navigate = useNavigate();
 
-//     navigate("/game/cringe");
-// }
 
 
 function randomRoomName () {

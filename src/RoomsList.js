@@ -35,7 +35,7 @@ export class RoomsList extends React.Component {
   
 
 function arrayItems(array) {
-    if (array.length != 0) {
+    if (array.length !== 0) {
         return array.map((name) =>
         <RoomPanel key={name} name={name}/>
         );
