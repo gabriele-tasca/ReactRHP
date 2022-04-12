@@ -7,6 +7,21 @@ import {
 } from "react-router-dom";
 
 
+export function Game() {
+  var params = useParams();
+  return (
+    <div style={{display:'flex',justifyContent:'center',alignItems:'center', height:'100%', width:'100%'}}>
+      <div>
+        Game Placeholder Screen<br/>
+        Room name: {params.roomName}<br/>
+        Share Link:<br/> 
+        <div style={{fontSize:'22px', color:'#777777'}}>https://gabriele-tasca.github.io/ReactRHP/game/{params.roomName}</div>
+      </div>
+    </div>
+  );
+}
+
+
 
 // export class Game extends React.Component {
 //     // constructor(props) {
@@ -68,18 +83,6 @@ import {
 //       this.props.quitCallback()
 //     }
 //   }
-
-export function Game() {
-  var params = useParams();
-  return (
-    <div style={{display:'flex',justifyContent:'center',alignItems:'center', height:'100%', width:'100%'}}>
-      <div>
-        Game Placeholder Screen<br/>
-        Room name: {params.roomName}
-      </div>
-    </div>
-  );
-}
 
 
 
